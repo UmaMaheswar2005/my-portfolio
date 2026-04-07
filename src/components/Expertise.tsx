@@ -1,61 +1,130 @@
+"use client";
+import { useState, useMemo } from "react";
 import { EXPERTISE } from "@/data/portfolio";
-import { BrainCircuit, Code, Cpu, type LucideIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const IconMap: Record<string, LucideIcon> = {
-  BrainCircuit,
-  Code,
-  Cpu,
+const getIcon = (name: string) => `https://skillicons.dev/icons?i=${name}`;
+
+const IconMap: Record<string, string> = {
+  "Python": getIcon("python"),
+  "React.js": getIcon("react"),
+  "Next.js": getIcon("nextjs"),
+  "TypeScript": getIcon("ts"),
+  "C++": getIcon("cpp"),
+  "Go": getIcon("go"),
+  "Rust": getIcon("rust"),
+  "TensorFlow": getIcon("tensorflow"),
+  "YOLOv8": getIcon("pytorch"),
+  "OpenCV": getIcon("opencv"),
+  "Pandas": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pandas.svg",
+  "Plotly": getIcon("d3"),
+  "Tailwind CSS": getIcon("tailwind"),
+  "Framer Motion": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/framer.svg", 
+  "Flask": getIcon("flask"),
+  "FastAPI": getIcon("fastapi"),
+  "Spring Boot": getIcon("spring"),
+  "AWS": getIcon("aws"),
+  "SAP OData API": getIcon("postman"),
+  "MySQL": getIcon("mysql")
+};
+
+const TechnicalDetails: Record<string, string> = {
+  "Python": "Primary language for developing the Intelligent Water Quality Monitoring and Object Detection systems.",
+  "Next.js": "Used to architect high-performance, SEO-optimized portfolio and music-engine interfaces.",
+  "YOLOv8": "Implemented for real-time object detection and spatial analysis in computer vision projects.",
+  "Pandas": "Engineered complex data pipelines for water quality forecasting and statistical analysis.",
+  "Framer Motion": "Utilized to create high-end, fluid user interactions and immersive UI experiences.",
+  "Go": "Used in microservice architecture for the 'Vibe to Viral' music engine for high concurrency.",
+  "Rust": "Implemented for memory-safe, high-performance back-end modules in the viral engine project.",
+  "C++": "Applied in low-level system integrations and performance-critical computing modules.",
+  "AWS": "Managed cloud deployment and integration strategies for web development projects."
 };
 
 export default function Expertise() {
+  const allSkills = useMemo(() => {
+    const masterList = [
+      "Python", "React.js", "Next.js", "TypeScript", "C++", "Go", "Rust", 
+      "TensorFlow", "YOLOv8", "OpenCV", "Pandas", "Plotly",
+      "Tailwind CSS", "Framer Motion", "Flask", "FastAPI", "Spring Boot", 
+      "AWS", "SAP OData API", "MySQL"
+    ];
+
+    return masterList.map(name => ({
+      name,
+      detail: TechnicalDetails[name] || "Advanced implementation within high-performance software architectures."
+    }));
+  }, []);
+
+  const [activeSkill, setActiveSkill] = useState(allSkills[0]);
+
   return (
-    <section id="expertise" className="py-32 px-6 max-w-7xl mx-auto border-t border-slate-900">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-        <div className="max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
-            Technical Stack
-          </h2>
-          <p className="text-slate-400 text-lg">
-            Cross-functional proficiency in modern software architecture.
-          </p>
-        </div>
-        <div className="text-sm font-mono text-blue-500">Expertise_v2.0</div>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-1px bg-slate-900 border border-slate-900">
-        {EXPERTISE.map((item) => {
-          const IconComponent = IconMap[item.icon as keyof typeof IconMap] || Cpu;
-
-          return (
-            <div 
-              key={item.area} 
-              className="group p-10 bg-[#020617] hover:bg-[#030a1f] transition-colors relative"
+    <section id="expertise" className="py-32 px-10 max-w-7xl mx-auto flex items-center relative">
+      <div className="grid lg:grid-cols-2 gap-20 items-center w-full relative z-10">
+        
+        <div className="space-y-10">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-12 bg-emerald-500" />
+            <span className="text-emerald-500 font-mono text-[10px] tracking-[0.4em] uppercase font-bold">Stack Specifications</span>
+          </div>
+          
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeSkill.name}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 30 }}
+              className="space-y-6"
             >
-              <div className="mb-8 p-3 w-fit rounded-lg bg-blue-500/10 text-blue-400 group-hover:scale-110 transition-transform">
-                <IconComponent size={28} />
-              </div>
-              
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                {item.area}
-              </h3>
-              
-              <p className="text-slate-400 leading-relaxed mb-8 text-sm h-12">
-                {item.description}
+              <h2 className="text-7xl md:text-[9.5rem] font-black tracking-tighter text-white uppercase italic leading-[0.8] font-syne">
+                {activeSkill.name}
+              </h2>
+              <p className="text-zinc-500 text-xl max-w-md leading-relaxed font-medium border-l border-emerald-500/30 pl-6">
+                {activeSkill.detail}
               </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-              <div className="flex flex-wrap gap-2">
-                {item.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="px-2 py-1 text-[10px] font-bold font-mono tracking-tighter bg-slate-900 text-slate-500 border border-slate-800 rounded group-hover:border-blue-500/50 group-hover:text-blue-400 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+        <div className="bg-[#050505] p-10 rounded-[4rem] border border-white/5 shadow-2xl relative">
+          <div className="grid grid-cols-4 md:grid-cols-5 gap-6">
+            {allSkills.map((skill) => {
+              const iconUrl = IconMap[skill.name];
+              const isActive = activeSkill.name === skill.name;
+
+              // These icons are naturally white/transparent and need to be black on white hover
+              const isWhiteIcon = ["Pandas", "Framer Motion", "Next.js"].includes(skill.name);
+
+              return (
+                <motion.button
+                  key={skill.name}
+                  onMouseEnter={() => setActiveSkill(skill)}
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  className={`group relative aspect-square rounded-2xl flex items-center justify-center transition-all duration-300 border
+                    ${isActive 
+                      ? 'bg-white border-white shadow-[0_0_50px_rgba(255,255,255,0.3)]' 
+                      : 'bg-zinc-900/40 border-white/5 hover:border-emerald-500/50'}
+                  `}
+                >
+                  <img 
+                    src={iconUrl} 
+                    alt={skill.name} 
+                    className={`w-10 h-10 object-contain transition-all duration-300 
+                      ${isActive ? (isWhiteIcon ? 'brightness-0' : 'brightness-100') : 'brightness-100 opacity-40 group-hover:opacity-100'}
+                      ${!isActive && isWhiteIcon ? 'invert' : ''} 
+                    `}
+                  />
+                  
+                  {isActive && (
+                    <motion.div 
+                      layoutId="active-neon-dot"
+                      className="absolute -bottom-3 w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981]" 
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

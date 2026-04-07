@@ -2,32 +2,29 @@ import { EXPERIENCE } from "@/data/portfolio";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-6 max-w-5xl mx-auto">
-      <div className="mb-20 text-center">
-        {/* Using standard square bracket syntax for CSS variables in Tailwind */}
-        <h2 className="text-4xl font-bold text-(--foreground) mb-4">Professional Path</h2>
-        <p className="text-(--muted)">Industry training and specialized internships.</p>
+    <section id="experience" className="py-32 px-10 max-w-7xl mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-20">
+        <h2 className="font-syne text-6xl font-extrabold uppercase tracking-tighter leading-none">
+          History.
+        </h2>
+        <p className="font-serif italic text-2xl text-zinc-500 max-w-sm">
+          A trajectory of technical growth across web, data, and cloud sectors.
+        </p>
       </div>
 
-      <div className="space-y-16">
-        {EXPERIENCE.map((exp, index) => (
-          <div key={index} className="relative pl-8 border-l-2 border-(--border) hover:border-(--foreground) transition-colors pb-4">
-            {/* Fixed the negative left position and variable syntax */}
-            <div className="absolute -left-9px top-0 w-4 h-4 rounded-full bg-(--background) border-2 border-(--foreground)" />
-            
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-              <div>
-                <h3 className="text-2xl font-bold text-(--foreground)">{exp.role}</h3>
-                <p className="text-blue-600 dark:text-blue-400 font-semibold">{exp.company}</p>
-              </div>
-              <span className="text-sm font-mono px-3 py-1 bg-slate-100 dark:bg-zinc-900 border border-(--border) rounded-md text-(--muted)">
-                {exp.duration}
-              </span>
+      <div className="space-y-0">
+        {EXPERIENCE.map((exp, i) => (
+          <div key={i} className="group border-t border-zinc-800 py-12 flex flex-col md:grid md:grid-cols-12 gap-6 hover:bg-zinc-900/30 transition-all px-4">
+            <div className="md:col-span-3">
+              <span className="font-mono text-[10px] text-emerald-500 font-bold uppercase tracking-[0.3em]">{exp.duration}</span>
             </div>
-            
-            <p className="text-(--muted) leading-relaxed max-w-3xl">
+            <div className="md:col-span-6">
+              <h3 className="font-syne text-2xl font-bold uppercase mb-2 group-hover:translate-x-2 transition-transform">{exp.role}</h3>
+              <p className="font-serif italic text-xl text-zinc-400">{exp.company}</p>
+            </div>
+            <div className="md:col-span-3 text-sm text-zinc-500 font-inter leading-relaxed">
               {exp.description}
-            </p>
+            </div>
           </div>
         ))}
       </div>

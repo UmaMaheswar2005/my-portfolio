@@ -1,53 +1,19 @@
 "use client";
-
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { PERSONAL_INFO, NAV_LINKS } from "@/data/portfolio";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const router = useRouter();
-
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-(--border) bg-(--background)/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Brand Name updated to MAHI */}
-        <div 
-          className="font-bold text-xl tracking-tighter cursor-pointer text-(--foreground)" 
-          onClick={() => router.push('/')}
-        >
-          MAHI
-        </div>
-        
-        <div className="flex items-center gap-8">
-          <ul className="hidden md:flex gap-8">
-            {NAV_LINKS.map((link) => (
-              <li key={link.name}>
-                <Link 
-                  href={link.href} 
-                  className="text-sm font-medium text-(--muted) hover:text-(--foreground) transition-colors"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link 
-                href="#experience" 
-                className="text-sm font-medium text-(--muted) hover:text-(--foreground) transition-colors"
-              >
-                Experience
-              </Link>
-            </li>
-          </ul>
-          
-          <Link 
-            href={PERSONAL_INFO.resume} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-sm font-semibold px-4 py-2 border border-(--border) rounded-md hover:bg-(--foreground) hover:text-(--background) transition-all"
-          >
-            Resume
-          </Link>
+    <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-100 bg-zinc-900/40 backdrop-blur-xl border border-white/10 px-8 py-4 rounded-full">
+      <div className="flex items-center gap-10">
+        <Link href="/" className="font-syne text-sm font-bold tracking-tighter hover:text-emerald-500 transition-colors">MAHI.</Link>
+        <div className="flex gap-6">
+          {["Expertise", "Projects", "Experience"].map((item) => (
+            <Link key={item} href={`#${item.toLowerCase()}`} className="font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors relative group">
+              {item}
+              <span className="absolute -bottom-1 left-0 w-0 h-1px bg-emerald-500 transition-all group-hover:w-full" />
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

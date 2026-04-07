@@ -1,120 +1,49 @@
 "use client";
-
 import { useState } from "react";
 import { Projects } from "@/data/portfolio";
-import { Github, ExternalLink, X, ShieldCheck, Code2, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Github, ArrowUpRight, X } from "lucide-react";
 
 export default function ProjectSection() {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selected, setSelected] = useState<any>(null);
 
   return (
-    <section id="projects" className="py-32 px-6 max-w-7xl mx-auto border-t border-(--border)">
-      <div className="mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold text-(--foreground) tracking-tight mb-6">
-          Featured Engineering
-        </h2>
-        <p className="text-(--muted) max-w-2xl text-lg leading-relaxed">
-          A collection of systems ranging from hybrid neural networks for environmental safety to quantum-enhanced cryptographic generators.
-        </p>
-      </div>
+    <section id="projects" className="py-32 px-10 max-w-7xl mx-auto">
+      <h2 className="font-syne text-6xl font-extrabold uppercase tracking-tighter mb-20">Works.</h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {Projects.map((project, index) => (
+      <div className="grid md:grid-cols-2 gap-px bg-zinc-800 border border-zinc-800">
+        {Projects.map((project, i) => (
           <div 
-            key={index} 
-            onClick={() => setSelectedProject(project)} 
-            className="group cursor-pointer flex flex-col h-full p-8 rounded-xl bg-(--background) border border-(--border) hover:border-(--foreground) transition-all duration-300 shadow-sm"
+            key={i} 
+            onClick={() => setSelected(project)}
+            className="bg-[#050505] p-12 aspect-square flex flex-col justify-between group cursor-pointer hover:bg-zinc-900/50 transition-all"
           >
-            <div className="flex justify-between items-start mb-8">
-              <div className="p-2 rounded-md bg-slate-100 dark:bg-zinc-900 border border-(--border) text-blue-600 dark:text-blue-400">
-                <Code2 size={18} />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mt-2">
-                {project.category}
-              </span>
+            <div className="flex justify-between items-start">
+              <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest italic">{project.category}</span>
+              <ArrowUpRight className="text-zinc-700 group-hover:text-emerald-500 transition-colors" />
             </div>
-
-            <h3 className="text-2xl font-bold mb-2 text-(--foreground) group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {project.title}
-            </h3>
-            
-            <div className="flex items-center gap-2 text-[11px] font-mono text-(--muted) mb-6">
-              <Calendar size={12} />
-              <span>{project.date}</span>
-            </div>
-            
-            <p className="text-(--muted) text-sm leading-relaxed mb-8 grow">
-              {project.description}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.map((tag) => (
-                <span 
-                  key={tag} 
-                  className="px-2.5 py-1 bg-slate-50 dark:bg-zinc-900 border border-(--border) rounded text-[10px] font-semibold text-(--muted)"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div>
+              <h3 className="font-syne text-4xl font-bold uppercase mb-4 leading-none">{project.title}</h3>
+              <p className="font-serif italic text-lg text-zinc-500 opacity-0 group-hover:opacity-100 transition-opacity">View Project Details</p>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Detail Modal */}
       <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              className="bg-(--background) max-w-3xl w-full p-10 rounded-2xl relative border border-(--border) shadow-2xl overflow-y-auto max-h-[90vh]"
-            >
-              <button 
-                onClick={() => setSelectedProject(null)} 
-                className="absolute top-8 right-8 text-(--muted) hover:text-(--foreground) transition-colors"
-              >
-                <X size={24} />
-              </button>
-              
-              <h3 className="text-3xl font-bold mb-10 text-(--foreground) pr-12">
-                {selectedProject.title}
-              </h3>
-              
-              <div className="grid md:grid-cols-2 gap-12 mb-10">
-                <div>
-                  <h4 className="text-[11px] font-bold uppercase tracking-widest text-(--muted) mb-4 border-b border-(--border) pb-2">The Challenge</h4>
-                  <p className="text-(--foreground) text-sm leading-relaxed">
-                    {selectedProject.details.challenge}
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-[11px] font-bold uppercase tracking-widest text-(--muted) mb-4 border-b border-(--border) pb-2">Technical Solution</h4>
-                  <p className="text-(--foreground) text-sm leading-relaxed">
-                    {selectedProject.details.solution}
-                  </p>
-                </div>
+        {selected && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-zinc-950 border border-zinc-800 p-12 rounded-[2rem] max-w-2xl w-full relative">
+              <button onClick={() => setSelected(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white"><X/></button>
+              <span className="font-mono text-[10px] text-emerald-500 uppercase font-bold">{selected.category}</span>
+              <h3 className="font-syne text-5xl font-bold uppercase my-6">{selected.title}</h3>
+              <div className="space-y-6 font-inter text-zinc-400 text-sm">
+                <p><b className="text-white block font-syne uppercase text-xs mb-2">Challenge:</b> {selected.details.challenge}</p>
+                <p><b className="text-white block font-syne uppercase text-xs mb-2">Solution:</b> {selected.details.solution}</p>
               </div>
-
-              <div className="p-6 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-xl mb-10">
-                <h4 className="text-[11px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-400 mb-3 flex items-center gap-2">
-                  <ShieldCheck size={16} /> Technical Impact
-                </h4>
-                <p className="text-sm text-blue-900 dark:text-blue-100 leading-relaxed italic">
-                  "{selectedProject.details.impact}"
-                </p>
-              </div>
-
-              <div className="flex justify-end pt-6 border-t border-(--border)">
-                 <a 
-                  href={selectedProject.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold px-6 py-3 bg-(--foreground) text-(--background) rounded-lg hover:opacity-90 transition-all"
-                >
-                  <Github size={18} /> Source Code
+              <div className="mt-10 flex justify-end">
+                <a href={selected.github} target="_blank" className="bg-white text-black px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-emerald-500 transition-colors">
+                  <Github size={18}/> REPOSITORY
                 </a>
               </div>
             </motion.div>

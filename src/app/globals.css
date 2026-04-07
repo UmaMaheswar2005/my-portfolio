@@ -1,38 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617; /* Deep Slate Navy */
-  --foreground: #f8fafc;
-  --muted: #94a3b8;
-  --border: #1e293b;
-  --accent-primary: #3b82f6; /* Logic Blue */
-  --accent-secondary: #8b5cf6; /* Quantum Purple */
+  --background: #02040a;
+  --foreground: #ffffff;
+  --accent: #10b981; /* Emerald Green */
+  --card-bg: rgba(255, 255, 255, 0.03);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Expert Utility: Subtle Mesh Gradient Background */
-.hero-mesh {
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%), 
-    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.1) 0, transparent 50%);
+/* Video 2 Inspired: Large Background Text */
+.bg-text-overlay {
+  position: absolute;
+  font-size: 15vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  z-index: -1;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
-/* Fixing the "Invincible" text logic */
-.btn-primary {
-  background: #f8fafc;
-  color: #020617 !important;
-  font-weight: 600;
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-.btn-outline {
-  border: 1px solid #1e293b;
-  color: #f8fafc !important;
-  background: transparent;
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+/* 3D Key Effect */
+.skill-key {
+  background: linear-gradient(145deg, #1e1e24, #09090b);
+  box-shadow: 4px 4px 0px #000, 0px 0px 10px rgba(16, 185, 129, 0.1);
+  transition: all 0.1s ease;
+  position: relative;
+  top: 0;
+}
+
+.skill-key:active, .skill-key.pressed {
+  top: 4px;
+  box-shadow: 0px 0px 0px #000;
+  background: var(--accent);
+  color: #000 !important;
+}
+
+/* Video 2 Typography Styling */
+.hero-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
 }
