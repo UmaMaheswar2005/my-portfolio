@@ -1,5 +1,5 @@
 import { Syne, Cormorant_Garamond, Space_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import "./globals.css"; // CRITICAL: Ensure this path is correct
 import Navbar from "@/components/Navbar";
 
 const syne = Syne({ subsets: ["latin"], weight: ["800"], variable: "--font-syne" });
@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${syne.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} bg-[#050505] text-white antialiased`}>
+      <body className={`${syne.variable} ${cormorant.variable} ${spaceMono.variable} ${inter.variable} font-inter bg-[#050505] text-white antialiased`}>
         <Navbar />
         {children}
       </body>
