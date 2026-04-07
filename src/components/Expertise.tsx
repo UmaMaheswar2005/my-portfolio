@@ -61,7 +61,8 @@ export default function Expertise() {
     <section id="expertise" className="py-32 px-10 max-w-7xl mx-auto flex items-center relative">
       <div className="grid lg:grid-cols-2 gap-20 items-center w-full relative z-10">
         
-        <div className="space-y-10">
+        {/* Left Side: Scaled-down Typography */}
+        <div className="space-y-8">
           <div className="flex items-center gap-4">
             <div className="h-px w-12 bg-emerald-500" />
             <span className="text-emerald-500 font-mono text-[10px] tracking-[0.4em] uppercase font-bold">Stack Specifications</span>
@@ -70,15 +71,17 @@ export default function Expertise() {
           <AnimatePresence mode="wait">
             <motion.div 
               key={activeSkill.name}
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              className="space-y-6"
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.2 }}
+              className="space-y-4"
             >
-              <h2 className="text-7xl md:text-[9.5rem] font-black tracking-tighter text-white uppercase italic leading-[0.8] font-syne">
+              {/* Fixed Size here */}
+              <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white uppercase italic leading-none font-syne">
                 {activeSkill.name}
               </h2>
-              <p className="text-zinc-500 text-xl max-w-md leading-relaxed font-medium border-l border-emerald-500/30 pl-6">
+              <p className="text-zinc-400 text-base md:text-lg max-w-md leading-relaxed font-inter border-l border-emerald-500/30 pl-5">
                 {activeSkill.detail}
               </p>
             </motion.div>
