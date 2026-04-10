@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import { PERSONAL_INFO } from "@/data/portfolio";
 
 export default function Hero() {
   return (
@@ -19,7 +20,7 @@ export default function Hero() {
             </motion.p>
             
             {/* Standardized, readable size instead of massive viewport units */}
-            <h1 className="font-syne text-5xl md:text-7xl font-extrabold italic uppercase tracking-tight leading-tight">
+            <h1 className="font-syne text-5xl md:text-7xl font-bold italic uppercase leading-tight mb-4">
               UMA MAHESWAR <br />
               <span className="text-outline not-italic">REDDY V.</span>
             </h1>
@@ -31,8 +32,9 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-6 items-center pt-4">
             <a 
-              href="/resume.pdf" 
+              href={PERSONAL_INFO.resume} 
               target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-bold text-xs tracking-widest hover:bg-emerald-500 transition-all"
             >
               <FileText size={16} /> DOWNLOAD_CV
