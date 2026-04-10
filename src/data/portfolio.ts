@@ -28,16 +28,16 @@ export const Projects = [
     }
   },
   {
-    title: "Vibe to Viral Engine",
+    title: "Vibe to Viral Engine (v1)",
     date: "Apr 2026 - Present",
     category: "Audio Analysis & AI",
-    tech: ["Python", "Librosa", "Machine Learning"], // Update these if needed!
-    description: "Music and audio analysis engine designed to evaluate the viral potential of tracks.",
+    tech: ["Python", "Librosa", "Machine Learning"], 
+    description: "Proprietary audio analysis engine developed for a private client to evaluate the viral potential of tracks through acoustic pattern matching.",
     github: "https://github.com/UmaMaheswar2005/vibe-to-viral-engine",
     details: {
-      challenge: "Identifying acoustic patterns that correlate with viral social media trends.",
-      solution: "Developed an analysis pipeline to extract audio features and classify engagement potential.",
-      impact: "Created a data-driven tool for content creators and musicians to optimize their tracks."
+      challenge: "Identifying acoustic signatures that correlate with social media engagement metrics.",
+      solution: "Developed a signal processing pipeline for feature extraction and trend classification.",
+      impact: "Successfully delivered v1 for private client use; future versions are slated for a core engine migration to Rust for high-concurrency processing."
     }
   },
   {

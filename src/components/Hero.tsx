@@ -5,34 +5,36 @@ import { PERSONAL_INFO } from "@/data/portfolio";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center px-6 md:px-10 overflow-hidden pt-20">
-      <div className="absolute top-1/3 right-0 w-1/3 h-px bg-zinc-900" />
-      
+    <section className="relative min-h-[90vh] flex items-center px-6 md:px-10 overflow-hidden pt-20 bg-[#02040a]">
+      {/* Geometric Structural Elements - Removes "Vibe" Glows */}
+      <div className="absolute top-1/4 right-0 w-1/3 h-px bg-zinc-900" />
+      <div className="absolute bottom-1/4 left-10 w-px h-1/4 bg-zinc-900" />
+
       <div className="relative z-10 w-full max-w-7xl">
-        <div className="space-y-8">
+        <div className="space-y-10">
           <div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="font-mono text-emerald-500 text-xs tracking-[0.3em] uppercase font-bold mb-6"
+              className="font-mono text-emerald-500 text-[10px] tracking-[0.4em] uppercase font-bold mb-6"
             >
-              System // Software Engineer // 2026
+              Systems // Intelligence // Full-Stack // 2026
             </motion.p>
             
-            {/* Standardized, readable size instead of massive viewport units */}
-            <h1 className="font-syne text-5xl md:text-7xl font-bold italic uppercase leading-tight mb-4">
+            <h1 className="font-syne text-5xl md:text-7xl font-extrabold italic uppercase leading-[1.1] tracking-tight">
               UMA MAHESWAR <br />
               <span className="text-outline not-italic">REDDY V.</span>
             </h1>
             
-            <p className="font-serif italic text-xl md:text-2xl text-zinc-400 mt-6 max-w-2xl leading-relaxed">
-              Architecting <span className="text-white">Quantum-Safe Systems</span> and Intelligence at scale.
+            {/* Broadened description covering SAP, Full-Stack, AI, and Quantum projects */}
+            <p className="font-serif italic text-xl md:text-2xl text-zinc-400 mt-6 max-w-3xl leading-snug">
+              Bridging <span className="text-white">Enterprise SAP Integration</span>, Scalable Full-Stack Systems, and <span className="text-white italic">Intelligent Data Architectures</span> for global scale.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-6 items-center pt-4">
             <a 
-              href={PERSONAL_INFO.resume} 
+              href={PERSONAL_INFO.resume} // Dynamically links to your PDF
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-bold text-xs tracking-widest hover:bg-emerald-500 transition-all"
@@ -40,8 +42,8 @@ export default function Hero() {
               <FileText size={16} /> DOWNLOAD_CV
             </a>
             
-            <a href="#projects" className="font-mono text-xs tracking-[0.2em] uppercase text-zinc-500 hover:text-white transition-all flex items-center gap-2">
-              Explore Works <ArrowRight size={14} />
+            <a href="#projects" className="font-mono text-[9px] tracking-[0.2em] uppercase text-zinc-500 hover:text-white transition-all flex items-center gap-2">
+              Explore_Deployments <ArrowRight size={14} className="text-emerald-500" />
             </a>
           </div>
         </div>
