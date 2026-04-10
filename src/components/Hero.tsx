@@ -13,12 +13,13 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl">
         <div className="space-y-10">
           <div>
+            {/* UPDATED: Clear, professional role titles */}
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="font-mono text-emerald-500 text-[10px] tracking-[0.4em] uppercase font-bold mb-6"
             >
-              Systems // Intelligence // Full-Stack // 2026
+              Software Engineer // AI Developer // Class of 2026
             </motion.p>
             
             <h1 className="font-syne text-5xl md:text-7xl font-extrabold italic uppercase leading-[1.1] tracking-tight">
@@ -26,9 +27,9 @@ export default function Hero() {
               <span className="text-outline not-italic">REDDY V.</span>
             </h1>
             
-            {/* Broadened description covering SAP, Full-Stack, AI, and Quantum projects */}
+            {/* UPDATED: Sharpened description to separate Web, AI, and Enterprise */}
             <p className="font-serif italic text-xl md:text-2xl text-zinc-400 mt-6 max-w-3xl leading-snug">
-              Bridging <span className="text-white">Enterprise SAP Integration</span>, Scalable Full-Stack Systems, and <span className="text-white italic">Intelligent Data Architectures</span> for global scale.
+              Architecting <span className="text-white">High-Performance Web Applications</span>, Enterprise Cloud Integrations, and <span className="text-white italic">Predictive AI Models</span>.
             </p>
           </div>
 

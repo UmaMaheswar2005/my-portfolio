@@ -1,29 +1,27 @@
 "use client";
 import { useState, useMemo } from "react";
-import { EXPERTISE } from "@/data/portfolio";
 import { motion, AnimatePresence } from "framer-motion";
 
 const getIcon = (name: string) => `https://skillicons.dev/icons?i=${name}`;
 
-// FIXED: YOLOv8 uses official SVG. 
 const IconMap: Record<string, string> = {
   "Python": getIcon("python"),
+  "Java": getIcon("java"), 
   "React.js": getIcon("react"),
   "Next.js": getIcon("nextjs"),
   "TypeScript": getIcon("ts"),
   "C++": getIcon("cpp"),
   "Go": getIcon("go"),
   "Rust": getIcon("rust"),
+  "Spring Boot": getIcon("spring"), // FIXED: Switched back to the green leaf symbol
   "TensorFlow": getIcon("tensorflow"),
   "YOLOv8": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/yolo.svg",
   "OpenCV": getIcon("opencv"),
   "Pandas": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/pandas.svg",
   "Plotly": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/plotly.svg",
-  "Tailwind CSS": getIcon("tailwind"),
+  "Qiskit": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/qiskit.svg",
   "Framer Motion": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/framer.svg", 
-  "Flask": getIcon("flask"),
   "FastAPI": getIcon("fastapi"),
-  "Spring Boot": getIcon("spring"),
   "AWS": getIcon("aws"),
   "SAP OData API": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/sap.svg",
   "MySQL": getIcon("mysql")
@@ -31,23 +29,26 @@ const IconMap: Record<string, string> = {
 
 const TechnicalDetails: Record<string, string> = {
   "Python": "Primary language for developing Intelligent Water Quality Monitoring and Object Detection.",
+  "Java": "Core backend language utilized for robust enterprise logic and civic system architectures.",
+  "Spring Boot": "Framework used to build scalable, RESTful backends for full-stack applications.",
   "Next.js": "Architecting high-performance, SEO-optimized portfolio and music-engine interfaces.",
   "YOLOv8": "Real-time object detection and spatial analysis in computer vision projects.",
   "Pandas": "Complex data pipelines for water quality forecasting and statistical analysis.",
+  "Qiskit": "Core framework for developing Quantum OTP generators and exploring quantum fundamentals.",
   "Framer Motion": "High-end, fluid user interactions and immersive UI experiences.",
   "Go": "Microservice architecture for the 'Vibe to Viral' music engine for high concurrency.",
   "Rust": "Memory-safe, high-performance back-end modules in the viral engine project.",
   "C++": "Applied in low-level system integrations and performance-critical computing.",
+  "SAP OData API": "Integrated enterprise-grade data services for seamless cloud-to-application communication.",
   "AWS": "Managed cloud deployment and integration strategies for web development projects."
 };
 
 export default function Expertise() {
   const allSkills = useMemo(() => {
     const masterList = [
-      "Python", "React.js", "Next.js", "TypeScript", "C++", "Go", "Rust", 
-      "TensorFlow", "YOLOv8", "OpenCV", "Pandas", "Plotly",
-      "Tailwind CSS", "Framer Motion", "Flask", "FastAPI", "Spring Boot", 
-      "AWS", "SAP OData API", "MySQL"
+      "Python", "Java", "React.js", "Next.js", "TypeScript", "C++", "Go", "Rust", 
+      "Spring Boot", "TensorFlow", "YOLOv8", "OpenCV", "Pandas", "Plotly",
+      "Qiskit", "Framer Motion", "FastAPI", "AWS", "SAP OData API", "MySQL"
     ];
 
     return masterList.map(name => ({
@@ -77,7 +78,6 @@ export default function Expertise() {
               transition={{ duration: 0.2 }}
               className="space-y-6"
             >
-              {/* FIXED: Removed break-words, scaled text so TensorFlow fits on one line */}
               <h2 className="text-4xl sm:text-5xl font-bold uppercase italic leading-tight font-syne">
                 {activeSkill.name}
               </h2>
@@ -94,8 +94,8 @@ export default function Expertise() {
               const iconUrl = IconMap[skill.name];
               const isActive = activeSkill.name === skill.name;
               
-              // FIXED: Removed Next.js from this list so it keeps its normal color. Added YOLOv8.
-              const isWhiteIcon = ["Pandas", "Framer Motion", "SAP OData API", "Plotly", "YOLOv8"].includes(skill.name);
+              // FIXED: Removed Spring Boot from this list so it keeps its green leaf color intact
+              const isWhiteIcon = ["Pandas", "Framer Motion", "SAP OData API", "Plotly", "YOLOv8", "Qiskit"].includes(skill.name);
 
               return (
                 <motion.button
