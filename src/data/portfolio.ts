@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
 
 export const Projects = [
   {
-    title: "Intelligent Water Quality Monitoring System",
+    title: "Water Quality Monitoring & Forecasting System",
     date: "Dec 2025 - Mar 2026",
     category: "Data Science & AI",
     tech: ["Python", "TensorFlow", "LSTM-CNN", "IoT"],
