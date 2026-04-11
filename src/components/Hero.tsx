@@ -1,53 +1,48 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
+import { ArrowRight, FileText } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center px-6 md:px-10 overflow-hidden pt-20 bg-[#02040a]">
-      {/* Geometric Structural Elements - Removes "Vibe" Glows */}
-      <div className="absolute top-1/4 right-0 w-1/3 h-px bg-zinc-900" />
-      <div className="absolute bottom-1/4 left-10 w-px h-1/4 bg-zinc-900" />
-
-      <div className="relative z-10 w-full max-w-7xl">
-        <div className="space-y-10">
-          <div>
-            {/* UPDATED: Clear, professional role titles */}
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="font-mono text-emerald-500 text-[10px] tracking-[0.4em] uppercase font-bold mb-6"
-            >
-              Software Engineer // AI Developer // Class of 2026
-            </motion.p>
-            
-            <h1 className="font-syne text-5xl md:text-7xl font-extrabold italic uppercase leading-[1.1] tracking-tight">
-              UMA MAHESWAR <br />
-              <span className="text-outline not-italic">REDDY V.</span>
-            </h1>
-            
-            {/* UPDATED: Sharpened description to separate Web, AI, and Enterprise */}
-            <p className="font-serif italic text-xl md:text-2xl text-zinc-400 mt-6 max-w-3xl leading-snug">
-              Architecting <span className="text-white">High-Performance Web Applications</span>, Enterprise Cloud Integrations, and <span className="text-white italic">Predictive AI Models</span>.
-            </p>
+    <section className="min-h-screen flex items-center pt-20 px-6 md:px-10 max-w-7xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="space-y-8">
+          <div className="inline-block px-4 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-600 dark:text-zinc-400">
+              {PERSONAL_INFO.college}
+            </span>
           </div>
 
-          <div className="flex flex-wrap gap-6 items-center pt-4">
-            <a 
-              href={PERSONAL_INFO.resume} // Dynamically links to your PDF
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-bold text-xs tracking-widest hover:bg-emerald-500 transition-all"
-            >
-              <FileText size={16} /> DOWNLOAD_CV
+          <h1 className="font-syne text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.95] tracking-tighter">
+            UMA MAHESWAR <br />
+            <span className="text-gradient">REDDY V.</span>
+          </h1>
+          
+          <p className="font-serif italic text-2xl md:text-3xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg">
+            Engineering <span className="font-semibold text-zinc-900 dark:text-white not-italic">Intelligence</span> across scalable enterprise systems, full-stack ecosystems, and predictive AI models.
+          </p>
+          
+          <div className="flex flex-wrap gap-5 pt-6">
+            <a href="#contact" className="group flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-8 py-4 rounded-lg font-mono text-xs font-bold uppercase tracking-widest hover:-translate-y-1 transition-all shadow-xl">
+              Contact Me <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            
-            <a href="#projects" className="font-mono text-[9px] tracking-[0.2em] uppercase text-zinc-500 hover:text-white transition-all flex items-center gap-2">
-              Explore_Deployments <ArrowRight size={14} className="text-emerald-500" />
+            <a href={PERSONAL_INFO.resume} target="_blank" className="flex items-center gap-3 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-800 px-8 py-4 rounded-lg font-mono text-xs font-bold uppercase tracking-widest hover:border-primary dark:hover:border-primary hover:-translate-y-1 transition-all">
+              <FileText size={16} /> View Resume
             </a>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Clean, Engineered Wireframe Graphic */}
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="hidden lg:flex justify-end items-center relative">
+           <div className="w-[80%] aspect-square rounded-full border border-zinc-300 dark:border-zinc-800 relative flex items-center justify-center">
+              <div className="w-[60%] aspect-square rounded-full border border-dashed border-primary/50 animate-[spin_60s_linear_infinite] flex items-center justify-center relative">
+                 <div className="absolute w-3 h-3 bg-primary rounded-full top-0 -translate-y-1/2 shadow-[0_0_15px_rgba(139,92,246,0.8)]"></div>
+              </div>
+           </div>
+        </motion.div>
+
       </div>
     </section>
   );

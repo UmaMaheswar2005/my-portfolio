@@ -1,32 +1,25 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: #02040a;
-    --foreground: #ffffff;
-  }
+/* Tells Tailwind v4 exactly how to trigger dark mode */
+@custom-variant dark (&:is(.dark *));
 
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    overflow-x: hidden;
+@theme {
+  --color-primary: #8b5cf6; /* Vibrant Violet */
+  --color-secondary: #ec4899; /* Pink */
+  --color-accent: #10b981; /* Emerald */
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
   }
 }
 
-/* Video 2 Typography Pairing */
-.font-syne { font-family: var(--font-syne), sans-serif; }
-.font-serif { font-family: var(--font-serif), serif; }
-.font-mono { font-family: var(--font-mono), monospace; }
-
-/* Fluid sizing: Min 3rem, Scales with viewport, Max 8rem */
-.fluid-header {
-  font-size: clamp(3rem, 10vw, 8rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-}
-
-.text-outline {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
-  color: transparent;
+@keyframes shine {
+  to { background-position: 200% center; }
 }
