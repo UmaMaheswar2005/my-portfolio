@@ -16,7 +16,7 @@ export const PERSONAL_INFO = {
 export const Projects = [
   {
     title: "Intelligent Water Quality Monitoring System",
-    date: "Dec 2025 - 2026",
+    date: "Dec 2025 - Mar 2026",
     category: "Data Science & AI",
     tech: ["Python", "TensorFlow", "LSTM-CNN", "IoT"],
     description: "Real-time forecasting system for water safety using hybrid neural networks.",
@@ -29,7 +29,7 @@ export const Projects = [
   },
   {
     title: "Vibe to Viral Engine (v1)",
-    date: "Apr 2026 - Present",
+    date: "Mar 2026 - Apr 2026",
     category: "Audio Analysis & AI",
     tech: ["Python", "Librosa", "Machine Learning"], 
     description: "Proprietary audio analysis engine developed for a private client to evaluate the viral potential of tracks through acoustic pattern matching.",
