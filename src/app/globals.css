@@ -1,25 +1,204 @@
+/* 1. IMPORTS MUST BE FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-/* Tells Tailwind v4 exactly how to trigger dark mode */
+/* 2. TAILWIND V4 CUSTOM VARIANTS */
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-  --color-primary: #8b5cf6; /* Vibrant Violet */
-  --color-secondary: #ec4899; /* Pink */
-  --color-accent: #10b981; /* Emerald */
-}
+@layer base {
+  :root {
+    --coral:#FF3A5C; --violet:#BF7EFF; --mint:#0CF5AA;
+    --amber:#FFC44D; --sky:#40C4FF; --lime:#C8F400;
+    --bg:#05060F; --bg-s:#0B0D1C; --bg-c:#0F1120;
+    --text:#F0EDE8; --muted:#565770; --dim:#2A2B3A;
+    --br:rgba(255,255,255,0.07); --brh:rgba(255,255,255,0.13);
+    --td:0.5s cubic-bezier(0.16,1,0.3,1);
+  }
 
-@layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shine 5s linear infinite;
+  /* Syncing with next-themes toggle */
+  .light {
+    --coral: #e11d48; --violet: #7c3aed; --mint: #059669;
+    --amber: #d97706; --sky: #0284c7; --lime: #65a30d;
+    --bg: #f8fafc;     /* Soft Slate Background */
+    --bg-s: #f1f5f9;   /* Slightly deeper slate for sections */
+    --bg-c: #ffffff;   /* Pure white only for cards to create depth */
+    --text: #0f172a; --muted: #64748b; --dim: #cbd5e1;
+    --br: rgba(0, 0, 0, 0.06); --brh: rgba(0, 0, 0, 0.12);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    transition: background var(--td), color var(--td);
+    position: relative;
+  }
+
+  /* Film Grain / Noise Overlay */
+  body::before {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.45;
   }
 }
 
-@keyframes shine {
-  to { background-position: 200% center; }
+@layer utilities {
+  .grad-text {
+    background: linear-gradient(130deg, var(--coral) 0%, var(--violet) 45%, var(--sky) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(70px); pointer-events: none;
+    transition: opacity var(--td);
+  }
+}
+/* ── MARQUEE ANIMATIONS ── */
+@layer utilities {
+  .mq-zone {
+    overflow: hidden;
+    background: var(--bg-s);
+    border-bottom: 1px solid var(--br);
+    transition: background var(--td);
+  }
+
+  .mq-row {
+    display: flex;
+    border-top: 1px solid var(--br);
+    overflow: hidden;
+  }
+
+  .mq-row:first-child {
+    border-top: none;
+  }
+
+  .mq-track {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* Forward Animation */
+  .mq-fwd {
+    animation: mF 34s linear infinite;
+  }
+
+  /* Reverse Animation */
+  .mq-rev {
+    animation: mR 34s linear infinite;
+  }
+
+  .mq-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* The actual movement logic */
+  @keyframes mF {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes mR {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  .mq-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 22px;
+    white-space: nowrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    border-right: 1px solid var(--br);
+    color: var(--muted);
+    cursor: default;
+    transition: color 0.2s;
+  }
+
+  .mq-chip:hover {
+    color: var(--text);
+  }
+
+  .mq-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Marquee Dot Colors */
+  .dc-coral { background: var(--coral); }
+  .dc-violet { background: var(--violet); }
+  .dc-mint { background: var(--mint); }
+  .dc-amber { background: var(--amber); }
+  .dc-sky { background: var(--sky); }
+  .dc-lime { background: var(--lime); }
+}
+@layer utilities {
+  /* This creates the "Cooler" spotlight effect that follows the mouse */
+  .spotlight-card {
+    position: relative;
+    z-index: 0;
+  }
+
+  .spotlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.08),
+      transparent 40%
+    );
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Molten Glass Effect for cards */
+  .pc {
+    background: var(--bg-c);
+    border: 1px solid var(--br);
+    backdrop-filter: blur(10px);
+    transition: all var(--td);
+  }
+
+  .pc:hover {
+    background: var(--bg-s);
+    border-color: var(--brh);
+    transform: scale(0.995); /* Subtle "press" effect */
+  }
+
+  /* Watermark styling */
+  .pc-wm {
+    position: absolute;
+    bottom: -30px;
+    right: -10px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 140px;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.035;
+    user-select: none;
+    pointer-events: none;
+    color: var(--text);
+    transition: opacity 0.3s, transform 0.5s;
+    z-index: 0;
+  }
+
+  .pc:hover .pc-wm {
+    opacity: 0.08;
+    transform: translateY(-10px);
+  }
 }

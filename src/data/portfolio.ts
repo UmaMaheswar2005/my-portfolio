@@ -1,3 +1,10 @@
+export const ROLES = [
+  "Software Engineer",
+  "AI Developer",
+  "Quantum Enthusiast",
+  "Full-Stack Builder"
+];
+
 export const NAV_LINKS = [
   { name: "Expertise", href: "#expertise" },
   { name: "Projects", href: "#projects" },
@@ -13,7 +20,7 @@ export const PERSONAL_INFO = {
   resume: "/Umamaheswar_V_Resume.pdf"
 };
 
-export const Projects = [
+export const PROJECTS = [
   {
     title: "Water Quality Monitoring & Forecasting System",
     date: "Dec 2025 - Mar 2026",
@@ -115,7 +122,6 @@ export const EXPERIENCE = [
   }
 ];
 
-// src/data/portfolio.ts
 export const EXPERTISE = [
   {
     area: "AI & Data Science",
