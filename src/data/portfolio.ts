@@ -26,7 +26,7 @@ export const PROJECTS = [
     date: "Dec 2025 - Mar 2026",
     category: "Data Science & AI",
     tech: ["Python", "TensorFlow", "LSTM-CNN", "IoT"],
-    description: "Real-time forecasting system for water safety using hybrid neural networks.",
+    description: "A sophisticated real-time monitoring ecosystem leveraging hybrid LSTM-CNN architectures to process spatial and temporal data. The system provides high-accuracy predictive analytics for 12 critical water quality parameters, ensuring proactive safety alerts across regional sensor networks.",
     github: "https://github.com/UmaMaheswar2005/Intelligent-Water-Quality-System",
     details: {
       challenge: "Predicting contamination levels from noisy regional sensor data.",
@@ -39,7 +39,7 @@ export const PROJECTS = [
     date: "Mar 2026 - Apr 2026",
     category: "Audio Analysis & AI",
     tech: ["Python", "Librosa", "Machine Learning"], 
-    description: "Proprietary audio analysis engine developed for a private client to evaluate the viral potential of tracks through acoustic pattern matching.",
+    description: "An advanced proprietary audio analysis engine engineered to evaluate the viral potential of musical tracks. By performing deep signal processing and energy fingerprinting, the system identifies high-engagement acoustic signatures, providing private industry clients with data-driven A&R insights.",
     github: "https://github.com/UmaMaheswar2005/vibe-to-viral-engine",
     details: {
       challenge: "Identifying acoustic signatures that correlate with social media engagement metrics.",
@@ -52,7 +52,7 @@ export const PROJECTS = [
     date: "Jan 2026 - Mar 2026",  
     category: "Quantum Computing",
     tech: ["Qiskit", "Python", "FastAPI"],
-    description: "Quantum algorithm implementation for optimization and cryptography.",
+    description: "A cutting-edge cryptographic implementation that harnesses true quantum randomness to generate secure one-time passwords. By interfacing directly with IBM's quantum hardware, the system eliminates the vulnerabilities of pseudo-random generators found in classical computing architectures.",
     github: "https://github.com/UmaMaheswar2005/quantum-otp-generator",
     details: {
       challenge: "OTP generation using quantum principles for enhanced security.",
@@ -65,7 +65,7 @@ export const PROJECTS = [
     date: "Nov 2025 - Jan 2026",
     category: "Enterprise Integration",
     tech: ["Python", "Flask", "SAP OData API"],
-    description: "Real-time sales order tracking integrated with SAP systems.",
+    description: "A robust enterprise-grade dashboard designed to bridge the gap between modern web interfaces and rigid SAP ERP backends. Using Flask-based middleware and OData APIs, the system provides real-time sales order tracking with advanced analytical filtering for high-volume enterprise data.",
     github: "https://github.com/UmaMaheswar2005/sap-enterprise-dashboard",
     details: {
       challenge: "Bridging modern web frontends with rigid enterprise SAP backends.",
@@ -78,7 +78,7 @@ export const PROJECTS = [
     date: "Dec 2025 - Jan 2026",
     category: "Full Stack & AI",
     tech: ["Java", "Spring Boot", "React.js", "MySQL"],
-    description: "AI-powered civic issue reporting and resolution platform.",
+    description: "A comprehensive full-stack platform focused on municipal transparency and infrastructure resolution. It features an AI categorization engine that automatically classifies citizen reports, integrated with a Spring Boot backend to facilitate rapid resolution and data tracking for local authorities.",
     github: "https://github.com/UmaMaheswar2005/CivicSight-Monitoring-System",
     details: {
       challenge: "Creating an intuitive interface for citizens to report issues.",
@@ -91,7 +91,7 @@ export const PROJECTS = [
     date: "Aug 2025 - Nov 2025",
     category: "Computer Vision",
     tech: ["Python", "OpenCV", "YOLOv8"],
-    description: "High-accuracy biometric and object identification for surveillance.",
+    description: "A high-performance security platform optimized for real-time biometric and object identification. By utilizing YOLOv8 for spatial detection and custom biometric models, the system achieves sub-30ms inference speeds, making it suitable for critical area monitoring and automated access control.",
     github: "https://github.com/UmaMaheswar2005/SMART_VISION_SYSTEM",
     details: {
       challenge: "Maintaining high detection speed without sacrificing accuracy.",

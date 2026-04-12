@@ -15,15 +15,15 @@
     --td:0.5s cubic-bezier(0.16,1,0.3,1);
   }
 
-  /* Syncing with next-themes toggle */
+  /* Premium Bone/Cream Light Mode */
   .light {
     --coral: #e11d48; --violet: #7c3aed; --mint: #059669;
     --amber: #d97706; --sky: #0284c7; --lime: #65a30d;
-    --bg: #f8fafc;     /* Soft Slate Background */
-    --bg-s: #f1f5f9;   /* Slightly deeper slate for sections */
-    --bg-c: #ffffff;   /* Pure white only for cards to create depth */
-    --text: #0f172a; --muted: #64748b; --dim: #cbd5e1;
-    --br: rgba(0, 0, 0, 0.06); --brh: rgba(0, 0, 0, 0.12);
+    --bg: #F9F8F3;     /* Creamy Bone Background */
+    --bg-s: #F2F0E9;   /* Deeper shade for section blending */
+    --bg-c: #FFFFFF;   /* Pure white cards for subtle depth */
+    --text: #1C1B18; --muted: #706D64; --dim: #D9D6CB;
+    --br: rgba(0, 0, 0, 0.05); --brh: rgba(0, 0, 0, 0.1);
   }
 
   body {
@@ -55,150 +55,77 @@
     filter: blur(70px); pointer-events: none;
     transition: opacity var(--td);
   }
-}
-/* ── MARQUEE ANIMATIONS ── */
-@layer utilities {
-  .mq-zone {
-    overflow: hidden;
-    background: var(--bg-s);
-    border-bottom: 1px solid var(--br);
-    transition: background var(--td);
-  }
 
-  .mq-row {
-    display: flex;
-    border-top: 1px solid var(--br);
-    overflow: hidden;
-  }
-
-  .mq-row:first-child {
-    border-top: none;
-  }
-
-  .mq-track {
-    display: flex;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  /* Forward Animation */
-  .mq-fwd {
-    animation: mF 34s linear infinite;
-  }
-
-  /* Reverse Animation */
-  .mq-rev {
-    animation: mR 34s linear infinite;
-  }
-
-  .mq-track:hover {
-    animation-play-state: paused;
-  }
-
-  /* The actual movement logic */
-  @keyframes mF {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  @keyframes mR {
-    from { transform: translateX(-50%); }
-    to { transform: translateX(0); }
-  }
-
-  .mq-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    padding: 12px 22px;
-    white-space: nowrap;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.07em;
-    border-right: 1px solid var(--br);
-    color: var(--muted);
-    cursor: default;
-    transition: color 0.2s;
-  }
-
-  .mq-chip:hover {
-    color: var(--text);
-  }
-
-  .mq-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* Marquee Dot Colors */
-  .dc-coral { background: var(--coral); }
-  .dc-violet { background: var(--violet); }
-  .dc-mint { background: var(--mint); }
-  .dc-amber { background: var(--amber); }
-  .dc-sky { background: var(--sky); }
-  .dc-lime { background: var(--lime); }
-}
-@layer utilities {
-  /* This creates the "Cooler" spotlight effect that follows the mouse */
+  /* ── PROJECT CARDS: ARCHITECTURAL DOT GRID & SPOTLIGHT ── */
   .spotlight-card {
     position: relative;
     z-index: 0;
   }
-
   .spotlight-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+    content: ""; position: absolute; inset: 0;
     background: radial-gradient(
-      600px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.08),
-      transparent 40%
+      800px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.06), transparent 40%
     );
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s;
+    z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.5s;
   }
+  .spotlight-card:hover::before { opacity: 1; }
 
-  .spotlight-card:hover::before {
-    opacity: 1;
+  /* Inner Dot Grid for Technical Feel */
+  .pc-grid-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(var(--brh) 1px, transparent 1px);
+    background-size: 24px 24px; opacity: 0.15; z-index: 0; transition: opacity 0.5s;
   }
+  .pc:hover .pc-grid-bg { opacity: 0.4; }
 
-  /* Molten Glass Effect for cards */
   .pc {
-    background: var(--bg-c);
-    border: 1px solid var(--br);
-    backdrop-filter: blur(10px);
-    transition: all var(--td);
+    background: var(--bg-c); border: 1px solid var(--br); transition: all var(--td);
   }
-
   .pc:hover {
-    background: var(--bg-s);
-    border-color: var(--brh);
-    transform: scale(0.995); /* Subtle "press" effect */
+    background: var(--bg-s); border-color: var(--brh); transform: scale(0.99); 
   }
 
-  /* Watermark styling */
   .pc-wm {
-    position: absolute;
-    bottom: -30px;
-    right: -10px;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 140px;
-    font-weight: 900;
-    line-height: 1;
-    opacity: 0.035;
-    user-select: none;
-    pointer-events: none;
-    color: var(--text);
-    transition: opacity 0.3s, transform 0.5s;
-    z-index: 0;
+    position: absolute; bottom: -30px; right: -10px;
+    font-family: 'Unbounded', sans-serif; font-size: 140px; font-weight: 900; line-height: 1;
+    opacity: 0.035; user-select: none; pointer-events: none; color: var(--text);
+    transition: all 0.5s ease; z-index: 0;
+  }
+  .pc:hover .pc-wm { opacity: 0.08; transform: translateY(-10px) scale(1.05); }
+
+  /* ── SKILLS MARQUEE: FLOATING PILLS & EDGE FADES ── */
+  .mq-zone {
+    overflow: hidden; background: var(--bg-s); padding: 3.5rem 0;
+    /* Edge fades */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
 
-  .pc:hover .pc-wm {
-    opacity: 0.08;
-    transform: translateY(-10px);
+  .mq-row { display: flex; white-space: nowrap; margin-bottom: 1.5rem; }
+  .mq-row:last-child { margin-bottom: 0; }
+  .mq-track { display: flex; flex-shrink: 0; }
+  
+  .mq-fwd { animation: mF 45s linear infinite; }
+  .mq-rev { animation: mR 45s linear infinite; }
+  .mq-track:hover { animation-play-state: paused; }
+
+  @keyframes mF { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes mR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  /* Elevated Glass Pill Design */
+  .mq-chip {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 10px 24px; margin: 0 12px;
+    background: var(--bg-c); border: 1px solid var(--br); border-radius: 100px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.05em; color: var(--muted); cursor: default;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  }
+
+  .mq-chip:hover {
+    color: var(--text); border-color: var(--brh); background: var(--bg);
+    transform: translateY(-5px) scale(1.03); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   }
 }

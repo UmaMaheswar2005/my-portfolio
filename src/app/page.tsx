@@ -1,25 +1,18 @@
-import Hero from '@/components/Hero';
-import Expertise from '@/components/Expertise';
-import ProjectSection from '@/components/ProjectSection';
-import Experience from '@/components/Experience';
-import Footer from '@/components/Footer';
+import Hero from "@/components/Hero";
+import ProjectSection from "@/components/ProjectSection";
+import Expertise from "@/components/Expertise";
+import Experience from "@/components/Experience";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* 1. Who you are & your big goals */}
+    <main className="relative">
+      <Navbar />
       <Hero />
-      
-      {/* 2. Your technical niches (Quantum, AI, Web) */}
       <Expertise />
-      
-      {/* 3. Proof of your specialized building skills */}
       <ProjectSection />
-      
-      {/* 4. Professional internships and industry training */}
       <Experience />
-      
-      {/* 5. Contact and social links */}
       <Footer />
     </main>
   );
