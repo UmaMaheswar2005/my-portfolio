@@ -12,10 +12,10 @@ const SkillIcon = ({ skill, theme }: { skill: string; theme: string | undefined 
   const simpleIconColor = isDark ? "white" : "black"; 
 
   // 1. Specific SVG Icons for tools that lack official brand logos
-  if (skill === "Librosa") return <AudioWaveform size={20} className="text-[var(--text)]" />;
-  if (skill === "LSTM-CNN") return <Network size={20} className="text-[var(--text)]" />;
-  if (skill === "Machine Learning") return <BrainCircuit size={20} className="text-[var(--text)]" />;
-  if (skill === "Database Design") return <Database size={20} className="text-[var(--text)]" />;
+  if (skill === "Librosa") return <AudioWaveform size={20} className="text-(--text)" />;
+  if (skill === "LSTM-CNN") return <Network size={20} className="text-(--text)" />;
+  if (skill === "Machine Learning") return <BrainCircuit size={20} className="text-(--text)" />;
+  if (skill === "Database Design") return <Database size={20} className="text-(--text)" />;
   
   // Map generic "Cloud" terms directly to the official AWS logo
   if (skill.includes("Cloud Deployment") || skill.includes("Cloud Integration") || skill === "AWS") {
@@ -71,18 +71,18 @@ export default function Expertise() {
   return (
     <section id="expertise">
       <div className="py-20 px-6 md:px-12">
-        <h2 className="font-['Unbounded'] font-black text-4xl md:text-6xl uppercase mb-16 text-[var(--text)]">Tech Stack</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-[var(--br)] border border-[var(--br)]">
+        <h2 className="font-['Unbounded'] font-black text-4xl md:text-6xl uppercase mb-16 text-(--text)">Tech Stack</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-1px bg-(--br) border border-(--br)">
           {EXPERTISE.map((exp, i) => {
             const Icon = ICON_MAP[exp.icon] || Code;
             return (
-              <div key={i} className="bg-[var(--bg-c)] p-10 min-h-[300px] flex flex-col group hover:bg-[var(--bg-s)] transition-colors">
-                <Icon className="mb-8 text-[var(--muted)] group-hover:text-[var(--coral)] transition-colors" size={32} />
-                <h3 className="font-['Unbounded'] font-bold text-lg uppercase mb-4 text-[var(--text)]">{exp.area}</h3>
-                <p className="text-sm text-[var(--muted)] leading-relaxed mb-8 flex-grow">{exp.description}</p>
+              <div key={i} className="bg-(--bg-c) p-10 min-h-300px flex flex-col group hover:bg-(--bg-s) transition-colors">
+                <Icon className="mb-8 text-(--muted) group-hover:text-(--coral) transition-colors" size={32} />
+                <h3 className="font-['Unbounded'] font-bold text-lg uppercase mb-4 text-(--text)">{exp.area}</h3>
+                <p className="text-sm text-(--muted) leading-relaxed mb-8 grow">{exp.description}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {exp.skills.map(s => (
-                    <span key={s} className="px-2 py-0.5 bg-[var(--bg)] border border-[var(--brh)] rounded text-[9px] font-mono text-[var(--muted)] uppercase">
+                    <span key={s} className="px-2 py-0.5 bg-(--bg) border border-(--brh) rounded text-[9px] font-mono text-(--muted) uppercase">
                       {s}
                     </span>
                   ))}
@@ -93,7 +93,7 @@ export default function Expertise() {
         </div>
       </div>
 
-      <div className="mq-zone border-t border-[var(--br)]">
+      <div className="mq-zone border-t border-(--br)">
         <div className="mq-row">
           <div className="mq-track mq-fwd">
             {[...ROW1, ...ROW1].map((s, i) => (
@@ -104,7 +104,7 @@ export default function Expertise() {
             ))}
           </div>
         </div>
-        <div className="mq-row border-t border-[var(--br)]">
+        <div className="mq-row border-t border-(--br)">
           <div className="mq-track mq-rev">
             {[...ROW2, ...ROW2].map((s, i) => (
               <div className="mq-chip" key={i}>

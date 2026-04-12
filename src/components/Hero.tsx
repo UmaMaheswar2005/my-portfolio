@@ -18,14 +18,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 border-b border-[var(--br)] overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 border-b border-(--br) overflow-hidden">
       {/* Blobs from singlepage.tsx */}
-      <div className="blob w-[700px] h-[500px] top-[-120px] left-[-150px] bg-[radial-gradient(ellipse,rgba(255,58,92,0.15)_0%,transparent_65%)]" />
-      <div className="blob w-[600px] h-[700px] top-[5%] right-[-120px] bg-[radial-gradient(ellipse,rgba(191,126,255,0.12)_0%,transparent_65%)]" />
+      <div className="blob w-700px h-500px top--120px left--150px bg-[radial-gradient(ellipse,rgba(255,58,92,0.15)_0%,transparent_65%)]" />
+      <div className="blob w-600px h-700px top-[5%] right--120px bg-[radial-gradient(ellipse,rgba(191,126,255,0.12)_0%,transparent_65%)]" />
 
       <div className="relative z-10">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[var(--brh)] bg-[var(--bg-s)] font-mono text-[11px] tracking-widest text-[var(--muted)] mb-10">
-          <span className="w-2 h-2 rounded-full bg-[var(--mint)] animate-pulse" />
+        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-(--brh) bg-(--bg-s) font-mono text-[11px] tracking-widest text-(--muted) mb-10">
+          <span className="w-2 h-2 rounded-full bg-(--mint) animate-pulse" />
           {PERSONAL_INFO.college}
         </div>
 
@@ -35,17 +35,17 @@ export default function Hero() {
         </h1>
 
         <div className="mt-10 flex items-center gap-4">
-          <span className="font-mono text-xs text-[var(--muted)] uppercase tracking-widest">I BUILD AS A →</span>
+          <span className="font-mono text-xs text-(--muted) uppercase tracking-widest">I BUILD AS A →</span>
           <span className={`text-2xl font-bold transition-all duration-300 ${fade ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             {ROLES[roleIdx]}
           </span>
         </div>
 
         <div className="flex gap-4 mt-12">
-          <a href="#contact" className="px-10 py-4 bg-[var(--text)] text-[var(--bg)] rounded-full font-bold text-sm hover:scale-105 transition-transform">
+          <a href="#contact" className="px-10 py-4 bg-(--text) text-(--bg) rounded-full font-bold text-sm hover:scale-105 transition-transform">
             Let's Connect
           </a>
-          <a href={PERSONAL_INFO.resume} target="_blank" className="px-10 py-4 border border-[var(--brh)] rounded-full font-bold text-sm hover:border-[var(--coral)] hover:text-[var(--coral)] transition-all">
+          <a href={PERSONAL_INFO.resume} target="_blank" className="px-10 py-4 border border-(--brh) rounded-full font-bold text-sm hover:border-(--coral) hover:text-(--coral) transition-all">
             View Resume ↗
           </a>
         </div>
