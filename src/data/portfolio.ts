@@ -8,6 +8,7 @@ export const ROLES = [
 export const NAV_LINKS = [
   { name: "Expertise", href: "#expertise" },
   { name: "Projects", href: "#projects" },
+  { name: "History", href: "#experience" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -38,7 +39,7 @@ export const PROJECTS = [
     title: "Vibe to Viral Engine (v1)",
     date: "Mar 2026 - Apr 2026",
     category: "Audio Analysis & AI",
-    tech: ["Python", "Librosa", "Machine Learning"], 
+    tech: ["Python", "Librosa", "Machine Learning", "Rust"], 
     description: "An advanced proprietary audio analysis engine engineered to evaluate the viral potential of musical tracks. By performing deep signal processing and energy fingerprinting, the system identifies high-engagement acoustic signatures, providing private industry clients with data-driven A&R insights.",
     github: "https://github.com/UmaMaheswar2005/vibe-to-viral-engine",
     details: {
@@ -130,15 +131,17 @@ export const EXPERTISE = [
     skills: ["Python", "TensorFlow", "YOLOv8", "OpenCV", "Pandas", "Plotly"]
   },
   {
-    area: "Full-Stack Engineering",
+    area: "Full-Stack & Systems", // Updated title slightly to reflect systems languages
     icon: "Code",
     description: "Developing scalable enterprise applications and interactive web dashboards.",
-    skills: ["React.js", "Next.js", "TypeScript", "Java", "Spring Boot", "Flask"]
+    // Added C++, Go, and Rust here!
+    skills: ["React.js", "Next.js", "TypeScript", "Java", "Spring Boot", "Flask", "C++", "Go", "Rust"] 
   },
   {
     area: "Quantum & Cloud Architecture",
     icon: "Cpu",
     description: "Implementing quantum cryptography algorithms and integrating cloud infrastructures.",
+    // Kept your custom text, the component will read "AWS" from this and show the logo
     skills: ["Qiskit", "SAP OData", "IoT", "MySQL", "AWS / Cloud Deployment"]
   }
 ];

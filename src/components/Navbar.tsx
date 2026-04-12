@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="flex items-center gap-10">
         <ul className="hidden md:flex gap-8 font-medium text-[13px] text-[var(--muted)] tracking-wider">
           <li><Link href="#projects" className="hover:text-[var(--text)] transition-colors">Works</Link></li>
-          <li><Link href="#history" className="hover:text-[var(--text)] transition-colors">History</Link></li>
+          <li><Link href="#experience" className="hover:text-[var(--text)] transition-colors">History</Link></li>
           <li><Link href="#contact" className="hover:text-[var(--text)] transition-colors">Contact</Link></li>
         </ul>
 

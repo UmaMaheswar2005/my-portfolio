@@ -6,6 +6,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   :root {
     --coral:#FF3A5C; --violet:#BF7EFF; --mint:#0CF5AA;
     --amber:#FFC44D; --sky:#40C4FF; --lime:#C8F400;
@@ -16,12 +19,12 @@
   }
 
   /* Premium Bone/Cream Light Mode */
-  .light {
+ .light {
     --coral: #e11d48; --violet: #7c3aed; --mint: #059669;
     --amber: #d97706; --sky: #0284c7; --lime: #65a30d;
-    --bg: #F9F8F3;     /* Creamy Bone Background */
-    --bg-s: #F2F0E9;   /* Deeper shade for section blending */
-    --bg-c: #FFFFFF;   /* Pure white cards for subtle depth */
+    --bg: #F9F8F3;     /* Unified Bone Background */
+    --bg-s: #F9F8F3;   /* Matches background exactly to remove "walls" */
+    --bg-c: #FFFFFF;   
     --text: #1C1B18; --muted: #706D64; --dim: #D9D6CB;
     --br: rgba(0, 0, 0, 0.05); --brh: rgba(0, 0, 0, 0.1);
   }
