@@ -88,7 +88,7 @@ export const PROJECTS = [
     }
   },
   {
-    title: "Security Object Detection System",
+    title: "Real-time Edge Security System",
     date: "Aug 2025 - Nov 2025",
     category: "Computer Vision",
     tech: ["Python", "OpenCV", "YOLOv8"],
