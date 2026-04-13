@@ -93,7 +93,7 @@ export const PROJECTS = [
     category: "Computer Vision",
     tech: ["Python", "OpenCV", "YOLOv8"],
     description: "A high-performance security platform optimized for real-time biometric and object identification. By utilizing YOLOv8 for spatial detection and custom biometric models, the system achieves sub-30ms inference speeds, making it suitable for critical area monitoring and automated access control.",
-    github: "https://github.com/UmaMaheswar2005/SMART_VISION_SYSTEM",
+    github: "https://github.com/UmaMaheswar2005/Real-time-Edge-Security-System",
     details: {
       challenge: "Maintaining high detection speed without sacrificing accuracy.",
       solution: "Optimized YOLO models for real-time biometric identification.",
